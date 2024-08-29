@@ -241,7 +241,7 @@ if game.PlaceId == 18837090609 then
 				for _, bed in ipairs(beds) do
 					if bed:FindFirstChild("Mattress") and bed.Mattress.BrickColor ~= player.TeamColor then
 						player.Character.HumanoidRootPart.CFrame = (CFrame.new(bed.Mattress.Position))
-						wait(5)
+						task.wait(4)
 					end
 				end
 			end
