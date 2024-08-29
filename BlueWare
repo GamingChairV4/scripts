@@ -358,7 +358,7 @@ if game.PlaceId == 18837090609 then
 					if otherPlayer ~= player and otherPlayer.Team ~= player.Team and otherPlayer.Team.Name ~= "Spectator" then
 						if otherPlayer.Character and otherPlayer.Character:FindFirstChild("HumanoidRootPart") then
 							player.Character.HumanoidRootPart.CFrame = otherPlayer.Character.HumanoidRootPart.CFrame
-							task.wait(0.1)
+							task.wait(2)
 						end
 					end
 				end
