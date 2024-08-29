@@ -1,4 +1,4 @@
-if game.PlaceId == 18837090609 then
+eif game.PlaceId == 18837090609 then
 	local ScreenGui = Instance.new("ScreenGui")
 	local TextLabel = Instance.new("TextLabel")
 	local killAura = Instance.new("TextButton")
@@ -258,7 +258,7 @@ if game.PlaceId == 18837090609 then
 				for _, bed in ipairs(beds) do
 					if bed:FindFirstChild("Mattress") and bed.Mattress.BrickColor ~= player.TeamColor then
 						player.Character.HumanoidRootPart.CFrame = (CFrame.new(bed.Mattress.Position))
-						task.wait(4)
+						task.wait(2)
 					end
 				end
 			end
