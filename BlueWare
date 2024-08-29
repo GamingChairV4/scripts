@@ -1,5 +1,4 @@
 if game.PlaceId == 18837090609 then
-	-- BlueWare
 	local ScreenGui = Instance.new("ScreenGui")
 	local TextLabel = Instance.new("TextLabel")
 	local killAura = Instance.new("TextButton")
@@ -14,6 +13,8 @@ if game.PlaceId == 18837090609 then
 	local UICorner_5 = Instance.new("UICorner")
 	local autoLoot = Instance.new("TextButton")
 	local UICorner_6 = Instance.new("UICorner")
+	local staffDetector = Instance.new("TextButton")
+	local UICorner_7 = Instance.new("UICorner")
 
 	--Properties:
 
@@ -135,9 +136,26 @@ if game.PlaceId == 18837090609 then
 
 	UICorner_6.Parent = autoLoot
 
+	staffDetector.Name = "staffDetector"
+	staffDetector.Parent = ScreenGui
+	staffDetector.BackgroundColor3 = Color3.fromRGB(255, 85, 0)
+	staffDetector.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	staffDetector.BorderSizePixel = 0
+	staffDetector.Position = UDim2.new(0.00524934288, 0, 0.733471096, 0)
+	staffDetector.Size = UDim2.new(0, 200, 0, 50)
+	staffDetector.Font = Enum.Font.Gotham
+	staffDetector.Text = "Staff Detector"
+	staffDetector.TextColor3 = Color3.fromRGB(255, 255, 255)
+	staffDetector.TextScaled = true
+	staffDetector.TextSize = 14.000
+	staffDetector.TextStrokeTransparency = 0.000
+	staffDetector.TextWrapped = true
+
+	UICorner_7.Parent = staffDetector
+
 	-- Scripts:
 
-	local function HQJOJ_fake_script() -- killAura.auraLocal 
+	local function JTUDQ_fake_script() -- killAura.auraLocal 
 		local script = Instance.new('LocalScript', killAura)
 
 		local aura = script.Parent
@@ -197,7 +215,7 @@ if game.PlaceId == 18837090609 then
 											local randomMessage = messages[math.random(#messages)] .. " " .. player.Name
 											local chatArgs = {
 												[1] = randomMessage,
-												[2] = randomMessage
+												[2] = "All"
 											}
 											DefaultChatSystemChatEvents:WaitForChild("SayMessageRequest"):FireServer(unpack(chatArgs))
 											previousTargets[player] = true
@@ -227,8 +245,8 @@ if game.PlaceId == 18837090609 then
 			waitForSwordAndCheck()
 		end)
 	end
-	coroutine.wrap(HQJOJ_fake_script)()
-	local function NAZHVK_fake_script() -- bedTp.LocalScript 
+	coroutine.wrap(JTUDQ_fake_script)()
+	local function SPAPLLJ_fake_script() -- bedTp.LocalScript 
 		local script = Instance.new('LocalScript', bedTp)
 
 		local bedTP = script.Parent
@@ -241,7 +259,7 @@ if game.PlaceId == 18837090609 then
 				for _, bed in ipairs(beds) do
 					if bed:FindFirstChild("Mattress") and bed.Mattress.BrickColor ~= player.TeamColor then
 						player.Character.HumanoidRootPart.CFrame = (CFrame.new(bed.Mattress.Position))
-						task.wait(4)
+						wait(5)
 					end
 				end
 			end
@@ -250,8 +268,8 @@ if game.PlaceId == 18837090609 then
 		end)
 
 	end
-	coroutine.wrap(NAZHVK_fake_script)()
-	local function LVPZ_fake_script() -- bedNuker.nukerLocal 
+	coroutine.wrap(SPAPLLJ_fake_script)()
+	local function UBJB_fake_script() -- bedNuker.nukerLocal 
 		local script = Instance.new('LocalScript', bedNuker)
 
 		local Players = game:GetService("Players")
@@ -344,23 +362,41 @@ if game.PlaceId == 18837090609 then
 			button.MouseButton1Click:Connect(toggleBedNuker)
 		end
 	end
-	coroutine.wrap(LVPZ_fake_script)()
-	local function TLTDPGE_fake_script() -- playerTp.tpLocal 
+	coroutine.wrap(UBJB_fake_script)()
+	local function HKUWIZ_fake_script() -- playerTp.tpLocal 
 		local script = Instance.new('LocalScript', playerTp)
 
-		local teleportEnabled = false
+		local teleportEnabled = false 
 		local player = game.Players.LocalPlayer
-		local players = game.Players:GetPlayers()
+
+		local function getValidPlayers()
+			local validPlayers = {}
+			for _, otherPlayer in ipairs(game.Players:GetPlayers()) do
+				if otherPlayer ~= player and otherPlayer.Team ~= player.Team and otherPlayer.Team.Name ~= "Spectator" then
+					table.insert(validPlayers, otherPlayer)
+				end
+			end
+			return validPlayers
+		end
 
 		local function teleportToPlayers()
+			local validPlayers = getValidPlayers()
+			if #validPlayers == 0 then return end
+
+			local currentPlayerIndex = 1
+
 			while teleportEnabled do
-				for _, otherPlayer in ipairs(players) do
-					if otherPlayer ~= player and otherPlayer.Team ~= player.Team and otherPlayer.Team.Name ~= "Spectator" then
-						if otherPlayer.Character and otherPlayer.Character:FindFirstChild("HumanoidRootPart") then
-							player.Character.HumanoidRootPart.CFrame = otherPlayer.Character.HumanoidRootPart.CFrame
-							task.wait(2)
-						end
+				local targetPlayer = validPlayers[currentPlayerIndex]
+				if targetPlayer and targetPlayer.Character and targetPlayer.Character:FindFirstChild("Humanoid") then
+					local humanoid = targetPlayer.Character:FindFirstChild("Humanoid")
+					if humanoid.Health > 0 then
+						player.Character.HumanoidRootPart.CFrame = targetPlayer.Character.HumanoidRootPart.CFrame
+						wait(0.5)
+					else
+						currentPlayerIndex = currentPlayerIndex % #validPlayers + 1
 					end
+				else
+					currentPlayerIndex = currentPlayerIndex % #validPlayers + 1
 				end
 			end
 		end
@@ -375,10 +411,9 @@ if game.PlaceId == 18837090609 then
 			end
 		end
 
-		script.Parent.MouseButton1Click:Connect(toggleTeleport)
 	end
-	coroutine.wrap(TLTDPGE_fake_script)()
-	local function EMHNJ_fake_script() -- infYield.infYield 
+	coroutine.wrap(HKUWIZ_fake_script)()
+	local function MJNXR_fake_script() -- infYield.infYield 
 		local script = Instance.new('LocalScript', infYield)
 
 		local infYield = script.Parent
@@ -387,8 +422,8 @@ if game.PlaceId == 18837090609 then
 			loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
 		end)
 	end
-	coroutine.wrap(EMHNJ_fake_script)()
-	local function WKFUA_fake_script() -- ScreenGui.Bind 
+	coroutine.wrap(MJNXR_fake_script)()
+	local function TFVA_fake_script() -- ScreenGui.Bind 
 		local script = Instance.new('LocalScript', ScreenGui)
 
 		local player = game.Players.LocalPlayer
@@ -408,8 +443,8 @@ if game.PlaceId == 18837090609 then
 		end)
 
 	end
-	coroutine.wrap(WKFUA_fake_script)()
-	local function VOYEWS_fake_script() -- autoLoot.autoLootLocal 
+	coroutine.wrap(TFVA_fake_script)()
+	local function VZTIBA_fake_script() -- autoLoot.autoLootLocal 
 		local script = Instance.new('LocalScript', autoLoot)
 
 		local autoLoot = script.Parent
@@ -548,9 +583,60 @@ if game.PlaceId == 18837090609 then
 
 		end)
 	end
-	coroutine.wrap(VOYEWS_fake_script)()
+	coroutine.wrap(VZTIBA_fake_script)()
+	local function LKLXQB_fake_script() -- staffDetector.staffDetectorLocal 
+		local script = Instance.new('LocalScript', staffDetector)
+
+		local staffDetector = script.Parent
+
+		staffDetector.MouseButton1Up:Connect(function()
+			local Players = game:GetService("Players")
+			local TeleportService = game:GetService("TeleportService")
+			local PlaceId = game.PlaceId
+			local StarterGui = game:GetService("StarterGui")
+
+			local AdminsFolder = game.ReplicatedStorage.Admins
+			local lastKickTimes = {}
+			local cooldownTime = 15
+
+			local function checkAndKick()
+				for _, player in ipairs(Players:GetPlayers()) do
+					for _, admin in ipairs(AdminsFolder:GetChildren()) do
+						if string.lower(player.Name) == string.lower(admin.Name) then
+							local currentTime = tick()
+							local lastKickTime = lastKickTimes[string.lower(player.Name)] or 0
+
+							if currentTime - lastKickTime >= cooldownTime then
+								-- local kickReason = "Staff Detected: (@" .. string.lower(player.Name) .. "), " .. string.lower(player.DisplayName)
+								local kickReason_notLowered = "Staff Detected: (@" .. player.Name .. "), " .. player.DisplayName
+
+								StarterGui:SetCore("SendNotification", {
+									Title = "Staff";
+									Text = kickReason_notLowered;
+									Duration = 6;
+								})
+
+								-- Players.LocalPlayer:Kick(kickReason .. "\nJoining a new server in a few seconds.")
+
+								wait(5)
 
 
+								-- TeleportService:Teleport(PlaceId, Players.LocalPlayer)
+
+								-- lastKickTimes[string.lower(player.Name)] = currentTime 
+							end
+						end
+					end
+				end
+			end
+
+			while true do
+				checkAndKick()
+				wait(0.1)
+			end
+		end)
+	end
+	coroutine.wrap(LKLXQB_fake_script)()
+	
 	ScreenGui.ResetOnSpawn = false
 end
-
