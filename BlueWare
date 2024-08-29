@@ -215,7 +215,6 @@ if game.PlaceId == 18837090609 then
 											local randomMessage = messages[math.random(#messages)] .. " " .. player.Name
 											local chatArgs = {
 												[1] = randomMessage,
-												[2] = "All"
 											}
 											DefaultChatSystemChatEvents:WaitForChild("SayMessageRequest"):FireServer(unpack(chatArgs))
 											previousTargets[player] = true
