@@ -1,4 +1,4 @@
-elseif game.PlaceId == 18837090609 then
+if game.PlaceId == 18837090609 then
 	local ScreenGui = Instance.new("ScreenGui")
 	local TextLabel = Instance.new("TextLabel")
 	local killAura = Instance.new("TextButton")
