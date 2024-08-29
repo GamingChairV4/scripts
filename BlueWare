@@ -1,7 +1,7 @@
--- Gui to Lua
--- Version: 3.2
+-- BlueWare (not skidded, this time)
 
 -- Instances:
+print("blueware is patched currently")
 
 local ScreenGui = Instance.new("ScreenGui")
 local TextLabel = Instance.new("TextLabel")
@@ -140,7 +140,7 @@ UICorner_6.Parent = autoLoot
 
 -- Scripts:
 
-local function XRBJZ_fake_script() -- killAura.auraLocal 
+local function IJKSU_fake_script() -- killAura.auraLocal 
 	local script = Instance.new('LocalScript', killAura)
 
 	
@@ -254,8 +254,31 @@ local function XRBJZ_fake_script() -- killAura.auraLocal
 		button.MouseButton1Click:Connect(toggleKillAura)
 	end
 end
-coroutine.wrap(XRBJZ_fake_script)()
-local function ORIWK_fake_script() -- bedNuker.nukerLocal 
+coroutine.wrap(IJKSU_fake_script)()
+local function UALFRCU_fake_script() -- bedTp.LocalScript 
+	local script = Instance.new('LocalScript', bedTp)
+
+	local bedTP = script.Parent
+	
+	bedTP.MouseButton1Click:Connect(function()
+		local player = game.Players.LocalPlayer
+		local beds = game.Workspace.Map.Beds:GetChildren()
+	
+		local function teleportToBeds()
+			for _, bed in ipairs(beds) do
+				if bed:FindFirstChild("Mattress") and bed.Mattress.BrickColor ~= player.TeamColor then
+					player.Character.HumanoidRootPart.CFrame = (CFrame.new(bed.Mattress.Position))
+					wait(5)
+				end
+			end
+		end
+	
+		teleportToBeds()
+	end)
+	
+end
+coroutine.wrap(UALFRCU_fake_script)()
+local function IGNMUF_fake_script() -- bedNuker.nukerLocal 
 	local script = Instance.new('LocalScript', bedNuker)
 
 	local Players = game:GetService("Players")
@@ -348,8 +371,8 @@ local function ORIWK_fake_script() -- bedNuker.nukerLocal
 		button.MouseButton1Click:Connect(toggleBedNuker)
 	end
 end
-coroutine.wrap(ORIWK_fake_script)()
-local function TXCDEY_fake_script() -- playerTp.tpLocal 
+coroutine.wrap(IGNMUF_fake_script)()
+local function MVADHK_fake_script() -- playerTp.tpLocal 
 	local script = Instance.new('LocalScript', playerTp)
 
 	local teleportEnabled = false
@@ -381,8 +404,8 @@ local function TXCDEY_fake_script() -- playerTp.tpLocal
 	
 	script.Parent.MouseButton1Click:Connect(toggleTeleport)
 end
-coroutine.wrap(TXCDEY_fake_script)()
-local function MBHRFQ_fake_script() -- infYield.infYield 
+coroutine.wrap(MVADHK_fake_script)()
+local function VSZH_fake_script() -- infYield.infYield 
 	local script = Instance.new('LocalScript', infYield)
 
 	local infYield = script.Parent
@@ -391,8 +414,8 @@ local function MBHRFQ_fake_script() -- infYield.infYield
 		loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
 	end)
 end
-coroutine.wrap(MBHRFQ_fake_script)()
-local function AMFCV_fake_script() -- ScreenGui.Bind 
+coroutine.wrap(VSZH_fake_script)()
+local function ZPEDH_fake_script() -- ScreenGui.Bind 
 	local script = Instance.new('LocalScript', ScreenGui)
 
 	local player = game.Players.LocalPlayer
@@ -411,8 +434,8 @@ local function AMFCV_fake_script() -- ScreenGui.Bind
 		end
 	end)
 end
-coroutine.wrap(AMFCV_fake_script)()
-local function VKXM_fake_script() -- autoLoot.autoLootLocal 
+coroutine.wrap(ZPEDH_fake_script)()
+local function HKDJF_fake_script() -- autoLoot.autoLootLocal 
 	local script = Instance.new('LocalScript', autoLoot)
 
 	local autoLoot = script.Parent
@@ -551,4 +574,4 @@ local function VKXM_fake_script() -- autoLoot.autoLootLocal
 	
 	end)
 end
-coroutine.wrap(VKXM_fake_script)()
+coroutine.wrap(HKDJF_fake_script)()
