@@ -596,7 +596,7 @@ if game.PlaceId == 18837090609 then
 
 			local AdminsFolder = game.ReplicatedStorage.Admins
 			local lastKickTimes = {}
-			local cooldownTime = 15
+			local cooldownTime = 300
 
 			local function checkAndKick()
 				for _, player in ipairs(Players:GetPlayers()) do
@@ -612,17 +612,17 @@ if game.PlaceId == 18837090609 then
 								StarterGui:SetCore("SendNotification", {
 									Title = "Staff";
 									Text = kickReason_notLowered;
-									Duration = 6;
+									Duration = 100;
 								})
 
 								-- Players.LocalPlayer:Kick(kickReason .. "\nJoining a new server in a few seconds.")
 
-								wait(5)
+								wait(1)
 
 
 								-- TeleportService:Teleport(PlaceId, Players.LocalPlayer)
 
-								-- lastKickTimes[string.lower(player.Name)] = currentTime 
+								lastKickTimes[string.lower(player.Name)] = currentTime 
 							end
 						end
 					end
