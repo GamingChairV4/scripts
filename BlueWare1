@@ -705,7 +705,7 @@ if game.PlaceId == 18837090609 or 17750024818 then
 			autoLoot.Visible = true
 			infYield.Visible = true
 			stafdetector.Visible = true
-			autowin.Visible = true
+            autowin.Visible = true
 		end)
 	end
 	coroutine.wrap(RZUXK_fake_script)()
