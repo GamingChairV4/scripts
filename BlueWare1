@@ -1,6 +1,6 @@
-if game.PlaceId == 1 or 1 then
-	-- Gui to Lua
-	-- Version: 3.2
+if game.PlaceId == 18837090609 or 17750024818 then
+	-- BlueWare
+	-- Version: 1.1
 
 	-- Instances:
 
