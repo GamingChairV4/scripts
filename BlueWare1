@@ -1,0 +1,712 @@
+if game.PlaceId == 1 or 1 then
+	-- Gui to Lua
+	-- Version: 3.2
+
+	-- Instances:
+
+	local ScreenGui = Instance.new("ScreenGui")
+	local TextLabel = Instance.new("TextLabel")
+	local killAura = Instance.new("TextButton")
+	local bedTp = Instance.new("TextButton")
+	local bedNuker = Instance.new("TextButton")
+	local autoWin = Instance.new("TextButton")
+	local infYield = Instance.new("TextButton")
+	local staffDetector = Instance.new("TextButton")
+	local autoLoot = Instance.new("TextButton")
+	local CombatTab = Instance.new("TextButton")
+	local ExploitTab = Instance.new("TextButton")
+
+	--Properties:
+
+	ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+	TextLabel.Parent = ScreenGui
+	TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabel.BackgroundTransparency = 1.000
+	TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	TextLabel.BorderSizePixel = 0
+	TextLabel.Position = UDim2.new(0.0131233595, 0, 0, 0)
+	TextLabel.Size = UDim2.new(0, 200, 0, 50)
+	TextLabel.Font = Enum.Font.Arcade
+	TextLabel.Text = "BlueWare"
+	TextLabel.TextColor3 = Color3.fromRGB(85, 170, 255)
+	TextLabel.TextScaled = true
+	TextLabel.TextSize = 14.000
+	TextLabel.TextWrapped = true
+
+	killAura.Name = "killAura"
+	killAura.Parent = ScreenGui
+	killAura.BackgroundColor3 = Color3.fromRGB(85, 170, 255)
+	killAura.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	killAura.BorderSizePixel = 0
+	killAura.Position = UDim2.new(0.013123326, 0, 0.181818187, 0)
+	killAura.Size = UDim2.new(0, 200, 0, 31)
+	killAura.Visible = false
+	killAura.Font = Enum.Font.Gotham
+	killAura.Text = "Kill Aura"
+	killAura.TextColor3 = Color3.fromRGB(255, 255, 255)
+	killAura.TextSize = 25.000
+	killAura.TextWrapped = true
+
+	bedTp.Name = "bedTp"
+	bedTp.Parent = ScreenGui
+	bedTp.BackgroundColor3 = Color3.fromRGB(85, 170, 255)
+	bedTp.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	bedTp.BorderSizePixel = 0
+	bedTp.Position = UDim2.new(0.214439765, 0, 0.181818187, 0)
+	bedTp.Size = UDim2.new(0, 200, 0, 31)
+	bedTp.Visible = false
+	bedTp.Font = Enum.Font.Gotham
+	bedTp.Text = "Bed Teleport"
+	bedTp.TextColor3 = Color3.fromRGB(255, 255, 255)
+	bedTp.TextSize = 25.000
+	bedTp.TextWrapped = true
+
+	bedNuker.Name = "bedNuker"
+	bedNuker.Parent = ScreenGui
+	bedNuker.BackgroundColor3 = Color3.fromRGB(85, 170, 255)
+	bedNuker.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	bedNuker.BorderSizePixel = 0
+	bedNuker.Position = UDim2.new(0.214324817, 0, 0.588842988, 0)
+	bedNuker.Size = UDim2.new(0, 200, 0, 31)
+	bedNuker.Visible = false
+	bedNuker.Font = Enum.Font.Gotham
+	bedNuker.Text = "Bed Nuker: None"
+	bedNuker.TextColor3 = Color3.fromRGB(255, 255, 255)
+	bedNuker.TextSize = 25.000
+	bedNuker.TextWrapped = true
+
+	autoWin.Name = "autoWin"
+	autoWin.Parent = ScreenGui
+	autoWin.BackgroundColor3 = Color3.fromRGB(85, 170, 255)
+	autoWin.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	autoWin.BorderSizePixel = 0
+	autoWin.Position = UDim2.new(0.214439765, 0, 0.264462799, 0)
+	autoWin.Size = UDim2.new(0, 200, 0, 31)
+	autoWin.Visible = false
+	autoWin.Font = Enum.Font.Gotham
+	autoWin.Text = "AutoWin"
+	autoWin.TextColor3 = Color3.fromRGB(255, 255, 255)
+	autoWin.TextSize = 25.000
+	autoWin.TextWrapped = true
+
+	infYield.Name = "infYield"
+	infYield.Parent = ScreenGui
+	infYield.BackgroundColor3 = Color3.fromRGB(85, 170, 255)
+	infYield.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	infYield.BorderSizePixel = 0
+	infYield.Position = UDim2.new(0.214439765, 0, 0.425619841, 0)
+	infYield.Size = UDim2.new(0, 200, 0, 31)
+	infYield.Visible = false
+	infYield.Font = Enum.Font.Gotham
+	infYield.Text = "Inf Yield"
+	infYield.TextColor3 = Color3.fromRGB(255, 255, 255)
+	infYield.TextSize = 25.000
+	infYield.TextWrapped = true
+
+	staffDetector.Name = "staffDetector"
+	staffDetector.Parent = ScreenGui
+	staffDetector.BackgroundColor3 = Color3.fromRGB(85, 170, 255)
+	staffDetector.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	staffDetector.BorderSizePixel = 0
+	staffDetector.Position = UDim2.new(0.214439765, 0, 0.345041335, 0)
+	staffDetector.Size = UDim2.new(0, 200, 0, 31)
+	staffDetector.Visible = false
+	staffDetector.Font = Enum.Font.Gotham
+	staffDetector.Text = "Staff Detector"
+	staffDetector.TextColor3 = Color3.fromRGB(255, 255, 255)
+	staffDetector.TextSize = 25.000
+	staffDetector.TextWrapped = true
+
+	autoLoot.Name = "autoLoot"
+	autoLoot.Parent = ScreenGui
+	autoLoot.BackgroundColor3 = Color3.fromRGB(85, 170, 255)
+	autoLoot.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	autoLoot.BorderSizePixel = 0
+	autoLoot.Position = UDim2.new(0.213620827, 0, 0.506198347, 0)
+	autoLoot.Size = UDim2.new(0, 200, 0, 31)
+	autoLoot.Visible = false
+	autoLoot.Font = Enum.Font.Gotham
+	autoLoot.Text = "Auto Loot Gui"
+	autoLoot.TextColor3 = Color3.fromRGB(255, 255, 255)
+	autoLoot.TextSize = 25.000
+	autoLoot.TextWrapped = true
+
+	CombatTab.Name = "CombatTab"
+	CombatTab.Parent = ScreenGui
+	CombatTab.BackgroundColor3 = Color3.fromRGB(85, 170, 255)
+	CombatTab.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	CombatTab.BorderSizePixel = 0
+	CombatTab.Position = UDim2.new(0.007309407, 0, 0.103305787, 0)
+	CombatTab.Size = UDim2.new(0, 218, 0, 31)
+	CombatTab.Font = Enum.Font.Gotham
+	CombatTab.Text = "Combat"
+	CombatTab.TextColor3 = Color3.fromRGB(255, 255, 255)
+	CombatTab.TextSize = 25.000
+	CombatTab.TextWrapped = true
+
+	ExploitTab.Name = "ExploitTab"
+	ExploitTab.Parent = ScreenGui
+	ExploitTab.BackgroundColor3 = Color3.fromRGB(85, 170, 255)
+	ExploitTab.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	ExploitTab.BorderSizePixel = 0
+	ExploitTab.Position = UDim2.new(0.206784472, 0, 0.103305787, 0)
+	ExploitTab.Size = UDim2.new(0, 218, 0, 31)
+	ExploitTab.Font = Enum.Font.Gotham
+	ExploitTab.Text = "Exploit"
+	ExploitTab.TextColor3 = Color3.fromRGB(255, 255, 255)
+	ExploitTab.TextSize = 25.000
+	ExploitTab.TextWrapped = true
+
+	-- Scripts:
+
+	local function ZSPP_fake_script() -- killAura.auraLocal 
+		local script = Instance.new('LocalScript', killAura)
+
+		local aura = script.Parent
+
+		aura.MouseButton1Click:Connect(function()
+			-- kill aura
+
+			local Players = game:GetService("Players")
+			local ReplicatedStorage = game:GetService("ReplicatedStorage")
+			local DefaultChatSystemChatEvents = ReplicatedStorage:WaitForChild("DefaultChatSystemChatEvents")
+			local LocalPlayer = Players.LocalPlayer
+
+			local messages = {
+				"My gaming chair is too good ",
+				"On the warlord grind ",
+				"Im using AsuraV4 ",
+
+			}
+
+			local previousTargets = {}
+
+			local function getCurrentHeldSword(character)
+				for _, item in pairs(character:GetChildren()) do
+					if item:IsA("Tool") and item.Name:lower():find("sword") then
+						return item.Name
+					end
+				end
+				return nil
+			end
+
+			local function checkPlayersInRange()
+				while task.wait() do
+					local Character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
+					if Character and Character:FindFirstChild("HumanoidRootPart") then
+						local localPlayerPos = Character.HumanoidRootPart.Position
+						local currentSword = getCurrentHeldSword(Character)
+
+						if currentSword then
+							for _, player in pairs(Players:GetPlayers()) do
+								if player ~= LocalPlayer and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+									local playerPos = player.Character.HumanoidRootPart.Position
+									local distance = (localPlayerPos - playerPos).Magnitude
+
+									if distance <= 50 then
+										local direction = (playerPos - localPlayerPos).unit
+
+										local args = {
+											[1] = player.Character,
+											[2] = direction,
+											[3] = currentSword
+										}
+										if player.Character:FindFirstChild("Humanoid") and player.Character.Humanoid.Health > 0 then
+											ReplicatedStorage.Remotes.SwordAttack:InvokeServer(unpack(args))
+											previousTargets[player] = nil
+
+										elseif player.Character:FindFirstChild("Humanoid") and player.Character.Humanoid.Health <= 0 and not previousTargets[player] then
+											local randomMessage = messages[math.random(#messages)] .. " " .. player.Name
+											local chatArgs = {
+												[1] = randomMessage,
+												[2] = randomMessage
+											}
+											DefaultChatSystemChatEvents:WaitForChild("SayMessageRequest"):FireServer(unpack(chatArgs))
+											previousTargets[player] = true
+										end
+									end
+								end
+							end
+						end
+					end
+				end
+			end
+
+			local function waitForSwordAndCheck()
+				while true do
+					if getCurrentHeldSword(LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()) then
+						checkPlayersInRange()
+					end
+					task.wait()
+				end
+			end
+
+			LocalPlayer.CharacterAdded:Connect(function(character)
+				character:WaitForChild("HumanoidRootPart")
+				waitForSwordAndCheck()
+			end)
+
+			waitForSwordAndCheck()
+		end)
+	end
+	coroutine.wrap(ZSPP_fake_script)()
+	local function OXUTVOS_fake_script() -- bedTp.LocalScript 
+		local script = Instance.new('LocalScript', bedTp)
+
+		local bedTP = script.Parent
+
+		bedTP.MouseButton1Click:Connect(function()
+			local player = game.Players.LocalPlayer
+			local beds = game.Workspace.Map.Beds:GetChildren()
+
+			local function teleportToBeds()
+				for _, bed in ipairs(beds) do
+					if bed:FindFirstChild("Mattress") and bed.Mattress.BrickColor ~= player.TeamColor then
+						player.Character.HumanoidRootPart.CFrame = (CFrame.new(bed.Mattress.Position))
+						wait(5)
+					end
+				end
+			end
+
+			teleportToBeds()
+		end)
+
+	end
+	coroutine.wrap(OXUTVOS_fake_script)()
+	local function IPXIHAL_fake_script() -- bedNuker.nukerLocal 
+		local script = Instance.new('LocalScript', bedNuker)
+
+		local Players = game:GetService("Players")
+		local ReplicatedStorage = game:GetService("ReplicatedStorage")
+		local LocalPlayer = Players.LocalPlayer
+
+		local bedNukerEnabled = false -- Initial state of bed nuker (disabled)
+
+		local function autoDamageBedsFunction()
+			while bedNukerEnabled do
+				local playerPosition = LocalPlayer.Character and LocalPlayer.Character.PrimaryPart and LocalPlayer.Character.PrimaryPart.Position
+				if playerPosition then
+					local bedsFolder = workspace:WaitForChild("Map"):WaitForChild("Beds")
+					local woodPick = "Wooden Pickaxe"
+					local stonePick = "Stone Pickaxe"
+					local ironPick = "Iron Pickaxe"
+					local dimPick = "Diamond Pickaxe"
+					local woodAxe = "Wooden Axe"
+					local stoneAxe = "Stone Axe"
+					local ironAxe = "Iron Axe"
+					local dimAxe = "Diamond Axe"
+
+					local remote = ReplicatedStorage:WaitForChild("Remotes"):WaitForChild("DamageBlock")
+
+					local function getNearestBed()
+						local nearestBed = nil
+						local shortestDistance = math.huge
+						local playerTeamColor = LocalPlayer.TeamColor
+
+						for _, bed in ipairs(bedsFolder:GetChildren()) do
+							if bed:IsA("Model") and bed:FindFirstChild("Primary") and bed:FindFirstChild("Mattress") then
+								local mattress = bed.Mattress
+								if mattress.BrickColor == playerTeamColor then
+									continue
+								end
+
+								local bedPosition = bed.Primary.Position
+								local distance = (bedPosition - playerPosition).Magnitude
+
+								if distance < shortestDistance then
+									nearestBed = bed
+									shortestDistance = distance
+								end
+							end
+						end
+
+						return nearestBed
+					end
+
+					local nearestBed = getNearestBed()
+					if nearestBed then
+						local args = {
+							[1] = nearestBed,
+							[2] = woodPick
+	--[[                [3] = woodAxe
+	                    [4] = stoneAxe
+	                    [5] = ironAxe
+	                    [6] = dimAxe
+	                    [7] = stonePick
+	                    [8] = ironAxe
+	                    [9] = dimPick]]
+						}
+						remote:InvokeServer(unpack(args))
+					end
+				end
+				task.wait()
+			end
+		end
+
+		local function toggleBedNuker()
+			bedNukerEnabled = not bedNukerEnabled
+			if bedNukerEnabled then
+				spawn(autoDamageBedsFunction)
+			end
+
+			-- Update the button text
+			local button = script.Parent
+			if button and button:IsA("TextButton") then
+				if bedNukerEnabled then
+					button.Text = "Bed Nuker: On"
+				else
+					button.Text = "Bed Nuker: Off"
+				end
+			end
+		end
+
+		-- Connect the button click to the toggle function
+		local button = script.Parent
+		if button and button:IsA("TextButton") then
+			button.MouseButton1Click:Connect(toggleBedNuker)
+		end
+	end
+	coroutine.wrap(IPXIHAL_fake_script)()
+	local function FMNISQA_fake_script() -- autoWin.autoWinLocal 
+		local script = Instance.new('LocalScript', autoWin)
+
+		script.Parent.MouseButton1Up:Connect(function()
+			local player = game.Players.LocalPlayer
+			local character = player.Character or player.CharacterAdded:Wait()
+			local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+			local teamColor = player.TeamColor.Color
+			local beds = game.Workspace.Map.Beds:GetChildren()
+
+			local skippedBeds = {}
+
+			local function teleportToBed(bed)
+				if bed and bed:FindFirstChild("Mattress") then
+					local mattress = bed.Mattress
+					if mattress.Color ~= teamColor then
+						humanoidRootPart.CFrame = mattress.CFrame + Vector3.new(0, 3, 0)
+						return true
+					else
+						table.insert(skippedBeds, bed)
+					end
+				end
+				return false
+			end
+
+			local function teleportToPlayer(targetPlayer)
+				if targetPlayer and targetPlayer.Character then
+					local targetHRP = targetPlayer.Character:FindFirstChild("HumanoidRootPart")
+					if targetHRP then
+						humanoidRootPart.CFrame = targetHRP.CFrame + Vector3.new(0, 3, 0)
+					end
+				end
+			end
+
+			local function getNextTarget()
+				for _, p in ipairs(game.Players:GetPlayers()) do
+					if p ~= player and p.TeamColor.Color ~= teamColor and p.Team.Name ~= "Spectator" then
+						return p
+					end
+				end
+				return nil
+			end
+
+
+			while true do
+
+				local allBedsChecked = true
+				for _, bed in ipairs(beds) do
+					if teleportToBed(bed) then
+						allBedsChecked = false
+						wait(4)
+					end
+				end
+
+
+				if not allBedsChecked and #skippedBeds > 0 then
+					for _, bed in ipairs(skippedBeds) do
+						if teleportToBed(bed) then
+							wait(4)
+						end
+					end
+				end
+
+
+				local target = getNextTarget()
+
+				while target and target.Character and target.Character:FindFirstChild("Humanoid") and target.Character.Humanoid.Health > 0 do
+					teleportToPlayer(target)
+					wait(0.1)  -- wait 0.1 seconds between teleports to the same player
+
+
+					if not target.Character or not target.Character:FindFirstChild("Humanoid") or target.Character.Humanoid.Health <= 0 then
+						target = getNextTarget()
+					end
+				end
+
+				wait(4)
+			end
+
+		end)
+	end
+	coroutine.wrap(FMNISQA_fake_script)()
+	local function NOSKC_fake_script() -- infYield.infYield 
+		local script = Instance.new('LocalScript', infYield)
+
+		local infYield = script.Parent
+
+		infYield.MouseButton1Click:Connect(function()
+			loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+		end)
+	end
+	coroutine.wrap(NOSKC_fake_script)()
+	local function NYTHDMH_fake_script() -- ScreenGui.Bind 
+		local script = Instance.new('LocalScript', ScreenGui)
+
+		local player = game.Players.LocalPlayer
+		local userInputService = game:GetService("UserInputService")
+
+
+		local gui = script.Parent
+
+		local function toggleGui()
+			gui.Enabled = not gui.Enabled
+		end
+
+		userInputService.InputBegan:Connect(function(input)
+			if input.KeyCode == Enum.KeyCode.RightShift then
+				toggleGui()
+			end
+		end)
+
+	end
+	coroutine.wrap(NYTHDMH_fake_script)()
+	local function UIMCH_fake_script() -- staffDetector.staffDetectorLocal 
+		local script = Instance.new('LocalScript', staffDetector)
+
+		local staffDetector = script.Parent
+
+		staffDetector.MouseButton1Up:Connect(function()
+			local Players = game:GetService("Players")
+			local TeleportService = game:GetService("TeleportService")
+			local PlaceId = game.PlaceId
+			local StarterGui = game:GetService("StarterGui")
+
+			local AdminsFolder = game.ReplicatedStorage.Admins
+			local lastKickTimes = {}
+			local cooldownTime = 15
+
+			local function checkAndKick()
+				for _, player in ipairs(Players:GetPlayers()) do
+					for _, admin in ipairs(AdminsFolder:GetChildren()) do
+						if string.lower(player.Name) == string.lower(admin.Name) then
+							local currentTime = tick()
+							local lastKickTime = lastKickTimes[string.lower(player.Name)] or 0
+
+							if currentTime - lastKickTime >= cooldownTime then
+								-- local kickReason = "Staff Detected: (@" .. string.lower(player.Name) .. "), " .. string.lower(player.DisplayName)
+								local kickReason_notLowered = "Staff Detected: (@" .. player.Name .. "), " .. player.DisplayName
+
+								StarterGui:SetCore("SendNotification", {
+									Title = "Staff";
+									Text = kickReason_notLowered;
+									Duration = 6;
+								})
+
+								-- Players.LocalPlayer:Kick(kickReason .. "\nJoining a new server in a few seconds.")
+
+								wait(5)
+
+
+								-- TeleportService:Teleport(PlaceId, Players.LocalPlayer)
+
+								-- lastKickTimes[string.lower(player.Name)] = currentTime 
+							end
+						end
+					end
+				end
+			end
+
+			while true do
+				checkAndKick()
+				wait(0.1)
+			end
+		end)
+	end
+	coroutine.wrap(UIMCH_fake_script)()
+	local function OTLFTZ_fake_script() -- autoLoot.autoLootLocal 
+		local script = Instance.new('LocalScript', autoLoot)
+
+		local autoLoot = script.Parent
+
+		autoLoot.MouseButton1Up:Connect(function()
+			local screenGui = Instance.new("ScreenGui")
+			screenGui.Name = "TeleportationGUI"
+			screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+			screenGui.ResetOnSpawn = false
+
+			local frame = Instance.new("Frame")
+			frame.Name = "ControlFrame"
+			frame.Size = UDim2.new(0, 200, 0, 150)
+			frame.Position = UDim2.new(0.5, -100, 0.5, -75)
+			frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+			frame.BackgroundTransparency = 0.5
+			frame.Active = true
+			frame.Draggable = true
+			frame.Parent = screenGui
+
+			local closeButton = Instance.new("TextButton")
+			closeButton.Name = "CloseButton"
+			closeButton.Size = UDim2.new(0, 20, 0, 20)
+			closeButton.Position = UDim2.new(1, -25, 0, 5)
+			closeButton.Text = "X"
+			closeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+			closeButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+			closeButton.Parent = frame
+
+			local toggleIron = Instance.new("TextButton")
+			toggleIron.Name = "ToggleIron"
+			toggleIron.Size = UDim2.new(1, 0, 0.25, 0)
+			toggleIron.Position = UDim2.new(0, 0, 0, 0)
+			toggleIron.Text = "Teleport Iron"
+			toggleIron.TextColor3 = Color3.fromRGB(255, 255, 255)
+			toggleIron.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
+			toggleIron.Parent = frame
+
+			local toggleEmerald = Instance.new("TextButton")
+			toggleEmerald.Name = "ToggleEmerald"
+			toggleEmerald.Size = UDim2.new(1, 0, 0.25, 0)
+			toggleEmerald.Position = UDim2.new(0, 0, 0.25, 0)
+			toggleEmerald.Text = "Teleport Emerald"
+			toggleEmerald.TextColor3 = Color3.fromRGB(255, 255, 255)
+			toggleEmerald.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+			toggleEmerald.Parent = frame
+
+			local toggleDiamond = Instance.new("TextButton")
+			toggleDiamond.Name = "ToggleDiamond"
+			toggleDiamond.Size = UDim2.new(1, 0, 0.25, 0)
+			toggleDiamond.Position = UDim2.new(0, 0, 0.5, 0)
+			toggleDiamond.Text = "Teleport Diamond"
+			toggleDiamond.TextColor3 = Color3.fromRGB(255, 255, 255)
+			toggleDiamond.BackgroundColor3 = Color3.fromRGB(0, 0, 255)
+			toggleDiamond.Parent = frame
+
+			local statusLabel = Instance.new("TextLabel")
+			statusLabel.Name = "StatusLabel"
+			statusLabel.Size = UDim2.new(1, 0, 0.25, 0)
+			statusLabel.Position = UDim2.new(0, 0, 0.75, 0)
+			statusLabel.Text = "Status: Idle"
+			statusLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+			statusLabel.BackgroundTransparency = 1
+			statusLabel.Parent = frame
+
+			local isTeleporting = {
+				Iron = false,
+				Emerald = false,
+				Diamond = false
+			}
+
+			local function teleportPlayerToPart(part)
+				local player = game.Players.LocalPlayer
+				local character = player.Character or player.CharacterAdded:Wait()
+				local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
+
+				if humanoidRootPart then
+					humanoidRootPart.CFrame = part.CFrame
+				else
+					warn("HumanoidRootPart not found in player's character.")
+				end
+			end
+
+			local function continuouslyTeleportToItems(itemType)
+				local pickupableItemsFolder = game.Workspace:FindFirstChild("PickupableItems")
+				if pickupableItemsFolder then
+					while isTeleporting[itemType] do
+						local models = pickupableItemsFolder:GetChildren()
+						if #models > 0 then
+							for _, model in ipairs(models) do
+								if model:IsA("Model") and model.Name == itemType then
+									local basePart = model:FindFirstChild(itemType)
+									if basePart and basePart:IsA("BasePart") then
+										statusLabel.Text = "Collecting: " .. basePart.Name
+										teleportPlayerToPart(basePart)
+										wait(0.5)
+									end
+								end
+							end
+						end
+						wait(0.5)
+					end
+					statusLabel.Text = "Status: Idle"
+				else
+					warn("Pickup folder not found in Workspace.")
+				end
+			end
+
+			toggleIron.MouseButton1Click:Connect(function()
+				isTeleporting.Iron = not isTeleporting.Iron
+				toggleIron.Text = isTeleporting.Iron and "Stop Teleport Iron" or "Teleport Iron"
+				if isTeleporting.Iron then
+					continuouslyTeleportToItems("Iron")
+				end
+			end)
+
+			toggleEmerald.MouseButton1Click:Connect(function()
+				isTeleporting.Emerald = not isTeleporting.Emerald
+				toggleEmerald.Text = isTeleporting.Emerald and "Stop Teleport Emerald" or "Teleport Emerald"
+				if isTeleporting.Emerald then
+					continuouslyTeleportToItems("Emerald")
+				end
+			end)
+
+			toggleDiamond.MouseButton1Click:Connect(function()
+				isTeleporting.Diamond = not isTeleporting.Diamond
+				toggleDiamond.Text = isTeleporting.Diamond and "Stop Teleport Diamond" or "Teleport Diamond"
+				if isTeleporting.Diamond then
+					continuouslyTeleportToItems("Diamond")
+				end
+			end)
+
+			closeButton.MouseButton1Click:Connect(function()
+				screenGui.Enabled = false
+			end)
+
+		end)
+	end
+	coroutine.wrap(OTLFTZ_fake_script)()
+	local function GRQPIX_fake_script() -- CombatTab.LocalScript 
+		local script = Instance.new('LocalScript', CombatTab)
+
+		local combatTab = script.Parent
+		local killaura = combatTab.Parent.killAura
+
+		combatTab.MouseButton1Up:Connect(function()
+			killaura.Visible = true
+		end)
+	end
+	coroutine.wrap(GRQPIX_fake_script)()
+	local function RZUXK_fake_script() -- ExploitTab.LocalScript 
+		local script = Instance.new('LocalScript', ExploitTab)
+
+		local exploitTab = script.Parent
+
+		local parent = exploitTab.Parent
+
+		local nuker = exploitTab.Parent.bedNuker
+		local bedTp = exploitTab.Parent.bedTp
+		local autowin = parent.autoWin
+		local stafdetector = parent.staffDetector
+		local infYield = parent.infYield
+		local autoLoot = parent.autoLoot
+
+		exploitTab.MouseButton1Up:Connect(function()
+			nuker.Visible = true
+			bedTp.Visible = true
+			autoLoot.Visible = true
+			infYield.Visible = true
+			stafdetector.Visible = true
+		end)
+	end
+	coroutine.wrap(RZUXK_fake_script)()
+	ScreenGui.ResetOnSpawn = false
+end
